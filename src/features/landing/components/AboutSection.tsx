@@ -1,16 +1,34 @@
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { Zap, Award, Lightbulb, MapPin, ArrowUpRight } from 'lucide-react';
-import { Badge } from '../../../shared/components/ui/Badge';
-import { fadeSlideLeft, fadeSlideRight } from '../../../shared/lib/motion';
-import { SOCIAL_LINKS } from '../../../shared/constants/social';
-import { COMPANY } from '../../../shared/constants/company';
-import { Images } from '../../../assets/images';
+import { motion } from "framer-motion";
+import { ArrowUpRight, Award, Lightbulb, MapPin, Zap } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Images } from "../../../assets/images";
+import { Badge } from "../../../shared/components/ui/Badge";
+import { COMPANY } from "../../../shared/constants/company";
+import { SOCIAL_LINKS } from "../../../shared/constants/social";
+import { fadeSlideLeft, fadeSlideRight } from "../../../shared/lib/motion";
 
 const PILLARS = [
-  { icon: Zap, label: 'Rapidité', value: '< 2h', color: 'text-violet-500 dark:text-violet-400', bg: 'bg-violet-500/10 border-violet-500/20' },
-  { icon: Award, label: 'Qualité', value: '4K Ultra', color: 'text-sky-500 dark:text-sky-400', bg: 'bg-sky-500/10 border-sky-500/20' },
-  { icon: Lightbulb, label: 'Innovation', value: 'Expert', color: 'text-amber-500 dark:text-amber-400', bg: 'bg-amber-500/10 border-amber-500/20' },
+  {
+    icon: Zap,
+    label: "Rapidité",
+    value: "< 2h",
+    color: "text-violet-500 dark:text-violet-400",
+    bg: "bg-violet-500/10 border-violet-500/20",
+  },
+  {
+    icon: Award,
+    label: "Qualité",
+    value: "4K Ultra",
+    color: "text-sky-500 dark:text-sky-400",
+    bg: "bg-sky-500/10 border-sky-500/20",
+  },
+  {
+    icon: Lightbulb,
+    label: "Innovation",
+    value: "Expert",
+    color: "text-amber-500 dark:text-amber-400",
+    bg: "bg-amber-500/10 border-amber-500/20",
+  },
 ];
 
 export function AboutSection() {
@@ -37,10 +55,14 @@ export function AboutSection() {
               <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between flex-wrap gap-2">
                 <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-4 py-3 flex items-center gap-2">
                   <MapPin className="w-4 h-4 text-primary" />
-                  <span className="text-white text-sm font-medium">{COMPANY.location}</span>
+                  <span className="text-white text-sm font-medium">
+                    {COMPANY.location}
+                  </span>
                 </div>
                 <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-4 py-3">
-                  <span className="text-white text-sm">🌍 Pour les marques africaines</span>
+                  <span className="text-white text-sm">
+                    🌍 Pour les marques africaines
+                  </span>
                 </div>
               </div>
             </div>
@@ -54,25 +76,39 @@ export function AboutSection() {
             viewport={{ once: true, margin: "-100px" }}
             className="order-1 lg:order-2"
           >
-            <Badge variant="primary" className="mb-4">— À propos</Badge>
+            <Badge variant="primary" className="mb-4">
+              — À propos
+            </Badge>
             <h2 className="font-heading font-bold text-3xl sm:text-4xl text-slate-900 dark:text-white leading-tight mb-5">
-              L'expertise tech au service<br />de votre <span className="text-gradient">visibilité.</span>
+              L'expertise tech au service
+              <br />
+              de votre <span className="text-gradient">visibilité.</span>
             </h2>
             <div className="space-y-3 text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8">
               <p>
-                Solinexia est née d'une conviction : chaque marque africaine mérite des visuels de classe mondiale et des solutions digitales de pointe. Notre expertise démocratise l'accès aux outils de production de qualité studio.
+                Solinexia est née d'une conviction : chaque marque africaine
+                mérite des visuels de classe mondiale et des solutions digitales
+                de pointe. Notre expertise démocratise l'accès aux outils de
+                production de qualité studio.
               </p>
               <p>
-                Basés à Dakar, nous comprenons les codes visuels du marché local tout en maîtrisant les standards globaux — une combinaison unique qui fait notre force.
+                Basés à Dakar, nous comprenons les codes visuels du marché local
+                tout en maîtrisant les standards globaux — une combinaison
+                unique qui fait notre force.
               </p>
             </div>
 
             {/* Pillars */}
             <div className="grid grid-cols-3 gap-3 mb-10">
               {PILLARS.map((p) => (
-                <div key={p.label} className={`rounded-2xl border ${p.bg} p-4 text-center`}>
+                <div
+                  key={p.label}
+                  className={`rounded-2xl border ${p.bg} p-4 text-center`}
+                >
                   <p.icon className={`w-5 h-5 ${p.color} mx-auto mb-2`} />
-                  <p className="text-slate-900 dark:text-white font-bold text-sm">{p.value}</p>
+                  <p className="text-slate-900 dark:text-white font-bold text-sm">
+                    {p.value}
+                  </p>
                   <p className="text-slate-500 text-xs">{p.label}</p>
                 </div>
               ))}
@@ -86,7 +122,7 @@ export function AboutSection() {
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary hover:border-primary/30 transition-all"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm text-slate-600 dark:text-slate-400 hover:text-[#25D366] dark:hover:text-[#25D366] hover:border-[#25D366]/40 transition-all cursor-pointer"
                 >
                   <s.icon className="w-4 h-4" />
                   {s.label}

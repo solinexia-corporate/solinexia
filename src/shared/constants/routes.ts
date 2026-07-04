@@ -1,13 +1,15 @@
 export const ROUTES = {
-  home: '/',
-  services: '/services',
-  pricing: '/pricing',
-  contact: '/contact',
+  home: "/",
+  services: "/services",
+  realisations: "/realisations",
+  pricing: "/pricing",
+  contact: "/contact",
 } as const;
 
 export const NAV_LINKS = [
-  { label: 'Accueil', href: ROUTES.home },
-  { label: 'Services', href: ROUTES.services },
-  { label: 'Tarifs', href: ROUTES.pricing },
-  { label: 'Contact', href: ROUTES.contact },
+  { label: "Accueil", href: ROUTES.home },
+  { label: "Services", href: ROUTES.services },
+  { label: "Nos Réalisations", href: ROUTES.realisations },
+  { label: "Tarifs", href: ROUTES.pricing },
+  { label: "Contact", href: ROUTES.contact },
 ] as const;

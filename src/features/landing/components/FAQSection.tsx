@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
-import { SectionHeader } from '../../../shared/components/ui/SectionHeader';
-import { FAQS } from '../data/landing.data';
-import { fadeSlideUp, staggerContainer } from '../../../shared/lib/motion';
-import { cn } from '../../../shared/lib/cn';
+import { AnimatePresence, motion } from "framer-motion";
+import { ChevronDown } from "lucide-react";
+import { useState } from "react";
+import { SectionHeader } from "../../../shared/components/ui/SectionHeader";
+import { cn } from "../../../shared/lib/cn";
+import { fadeSlideUp, staggerContainer } from "../../../shared/lib/motion";
+import { FAQS } from "../data/landing.data";
 
 export function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -35,7 +35,7 @@ export function FAQSection() {
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none"
+                  className="w-full px-6 py-5 flex items-center justify-between text-left cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors focus:outline-none"
                 >
                   <span className="font-heading font-medium text-slate-900 dark:text-white pr-8">
                     {faq.q}
@@ -43,7 +43,7 @@ export function FAQSection() {
                   <ChevronDown
                     className={cn(
                       "w-5 h-5 text-slate-400 transition-transform duration-300 shrink-0",
-                      isOpen && "rotate-180 text-primary"
+                      isOpen && "rotate-180 text-primary",
                     )}
                   />
                 </button>
@@ -51,9 +51,9 @@ export function FAQSection() {
                   {isOpen && (
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
+                      animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: 'easeInOut' }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
                     >
                       <div className="px-6 pb-5 text-slate-600 dark:text-slate-400 text-sm leading-relaxed border-t border-slate-100 dark:border-slate-800/50 pt-4">
                         {faq.a}

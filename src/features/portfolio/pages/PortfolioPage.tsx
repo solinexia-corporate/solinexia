@@ -1,11 +1,18 @@
-import { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { ArrowLeft, Clock, Star, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
-import { PORTFOLIO_ITEMS } from '../data/portfolio.data';
-import { BeforeAfterSlider } from '../../../shared/components/ui/molecules/BeforeAfterSlider';
-import { cn } from '../../../shared/lib/cn';
-import { fadeSlideUp } from '../../../shared/lib/motion';
+import { AnimatePresence, motion } from "framer-motion";
+import {
+  ArrowLeft,
+  ChevronLeft,
+  ChevronRight,
+  Clock,
+  Sparkles,
+  Star,
+} from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { BeforeAfterSlider } from "../../../shared/components/ui/molecules/BeforeAfterSlider";
+import { cn } from "../../../shared/lib/cn";
+import { fadeSlideUp } from "../../../shared/lib/motion";
+import { PORTFOLIO_ITEMS } from "../data/portfolio.data";
 
 export default function PortfolioPage() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -13,8 +20,12 @@ export default function PortfolioPage() {
   const activeItem = PORTFOLIO_ITEMS[activeIndex];
   const carouselRef = useRef<HTMLDivElement>(null);
 
-  const handleNext = () => setActiveIndex((prev) => (prev + 1) % PORTFOLIO_ITEMS.length);
-  const handlePrev = () => setActiveIndex((prev) => (prev - 1 + PORTFOLIO_ITEMS.length) % PORTFOLIO_ITEMS.length);
+  const handleNext = () =>
+    setActiveIndex((prev) => (prev + 1) % PORTFOLIO_ITEMS.length);
+  const handlePrev = () =>
+    setActiveIndex(
+      (prev) => (prev - 1 + PORTFOLIO_ITEMS.length) % PORTFOLIO_ITEMS.length,
+    );
 
   // Auto-scroll every 3 seconds
   useEffect(() => {
@@ -28,7 +39,9 @@ export default function PortfolioPage() {
   // Scroll active thumbnail into view
   useEffect(() => {
     if (!carouselRef.current) return;
-    const activeThumbnail = carouselRef.current.children[activeIndex] as HTMLElement;
+    const activeThumbnail = carouselRef.current.children[
+      activeIndex
+    ] as HTMLElement;
     if (activeThumbnail) {
       const containerLeft = carouselRef.current.scrollLeft;
       const containerRight = containerLeft + carouselRef.current.clientWidth;
@@ -37,8 +50,11 @@ export default function PortfolioPage() {
 
       if (itemLeft < containerLeft || itemRight > containerRight) {
         carouselRef.current.scrollTo({
-          left: itemLeft - carouselRef.current.clientWidth / 2 + activeThumbnail.clientWidth / 2,
-          behavior: 'smooth',
+          left:
+            itemLeft -
+            carouselRef.current.clientWidth / 2 +
+            activeThumbnail.clientWidth / 2,
+          behavior: "smooth",
         });
       }
     }
@@ -50,26 +66,40 @@ export default function PortfolioPage() {
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] sm:w-[800px] h-[600px] sm:h-[800px] bg-primary/10 rounded-full blur-[150px] pointer-events-none" />
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 flex flex-col relative z-10">
-        
         {/* Header */}
-        <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-4 sm:mb-6 lg:mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4 sm:gap-6">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-4 sm:mb-6 lg:mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4 sm:gap-6"
+        >
           <div>
-            <Link to="/" className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors group mb-3 sm:mb-6">
+            <Link
+              to="/"
+              className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors group mb-3 sm:mb-6"
+            >
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
               Retour à l'accueil
             </Link>
             <h1 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-slate-900 dark:text-white mb-1 sm:mb-2 tracking-tight">
               Nos <span className="text-gradient">Réalisations</span>.
             </h1>
-            <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base lg:text-lg">La magie de la retouche et de la direction artistique.</p>
+            <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base lg:text-lg">
+              La magie de la retouche et de la direction artistique.
+            </p>
           </div>
-          
+
           {/* Controls */}
           <div className="flex gap-2 sm:gap-3">
-            <button onClick={handlePrev} className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 flex items-center justify-center text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+            <button
+              onClick={handlePrev}
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 flex items-center justify-center text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800 hover:scale-105 cursor-pointer transition-all duration-300"
+            >
               <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
-            <button onClick={handleNext} className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 flex items-center justify-center text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+            <button
+              onClick={handleNext}
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 flex items-center justify-center text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800 hover:scale-105 cursor-pointer transition-all duration-300"
+            >
               <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
           </div>
@@ -128,16 +158,33 @@ export default function PortfolioPage() {
                     </span>
                     <div className="flex gap-0.5">
                       {[...Array(5)].map((_, i) => (
-                        <Star key={i} className={cn("w-3.5 h-3.5", i < activeItem.rating ? "fill-amber-400 text-amber-400" : "text-slate-300 dark:text-slate-600")} />
+                        <Star
+                          key={i}
+                          className={cn(
+                            "w-3.5 h-3.5",
+                            i < activeItem.rating
+                              ? "fill-amber-400 text-amber-400"
+                              : "text-slate-300 dark:text-slate-600",
+                          )}
+                        />
                       ))}
                     </div>
                   </div>
-                  <h2 className="font-heading font-bold text-xl sm:text-2xl text-slate-900 dark:text-white mb-1 transition-colors">{activeItem.client}</h2>
-                  <p className="text-primary font-medium text-xs sm:text-sm mb-3">{activeItem.desc}</p>
-                  <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm leading-relaxed mb-2">{activeItem.details}</p>
+                  <h2 className="font-heading font-bold text-xl sm:text-2xl text-slate-900 dark:text-white mb-1 transition-colors">
+                    {activeItem.client}
+                  </h2>
+                  <p className="text-primary font-medium text-xs sm:text-sm mb-3">
+                    {activeItem.desc}
+                  </p>
+                  <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm leading-relaxed mb-2">
+                    {activeItem.details}
+                  </p>
                   <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
                     <Clock className="w-3.5 h-3.5" />
-                    Réalisé en <span className="font-bold text-slate-900 dark:text-white">{activeItem.time}</span>
+                    Réalisé en{" "}
+                    <span className="font-bold text-slate-900 dark:text-white">
+                      {activeItem.time}
+                    </span>
                   </div>
                 </motion.div>
               </AnimatePresence>
@@ -173,26 +220,45 @@ export default function PortfolioPage() {
                     </span>
                     <div className="flex gap-0.5">
                       {[...Array(5)].map((_, i) => (
-                        <Star key={i} className={cn("w-4 h-4", i < activeItem.rating ? "fill-amber-400 text-amber-400" : "text-slate-300 dark:text-slate-600")} />
+                        <Star
+                          key={i}
+                          className={cn(
+                            "w-4 h-4",
+                            i < activeItem.rating
+                              ? "fill-amber-400 text-amber-400"
+                              : "text-slate-300 dark:text-slate-600",
+                          )}
+                        />
                       ))}
                     </div>
                   </div>
 
-                  <h2 className="font-heading font-bold text-2xl lg:text-3xl text-slate-900 dark:text-white mb-2 leading-tight transition-colors">{activeItem.client}</h2>
-                  <p className="text-primary font-medium text-sm mb-5">{activeItem.desc}</p>
+                  <h2 className="font-heading font-bold text-2xl lg:text-3xl text-slate-900 dark:text-white mb-2 leading-tight transition-colors">
+                    {activeItem.client}
+                  </h2>
+                  <p className="text-primary font-medium text-sm mb-5">
+                    {activeItem.desc}
+                  </p>
 
                   <div className="space-y-4">
                     <div className="flex items-start gap-3">
                       <div className="w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center shrink-0 border border-slate-200 dark:border-slate-700 transition-colors">
                         <Sparkles className="w-4 h-4 text-slate-600 dark:text-slate-300" />
                       </div>
-                      <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed transition-colors">{activeItem.details}</p>
+                      <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed transition-colors">
+                        {activeItem.details}
+                      </p>
                     </div>
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center shrink-0 border border-slate-200 dark:border-slate-700 transition-colors">
                         <Clock className="w-4 h-4 text-slate-600 dark:text-slate-300" />
                       </div>
-                      <p className="text-slate-600 dark:text-slate-300 text-sm transition-colors">Réalisé en <span className="font-bold text-slate-900 dark:text-white">{activeItem.time}</span></p>
+                      <p className="text-slate-600 dark:text-slate-300 text-sm transition-colors">
+                        Réalisé en{" "}
+                        <span className="font-bold text-slate-900 dark:text-white">
+                          {activeItem.time}
+                        </span>
+                      </p>
                     </div>
                   </div>
                 </motion.div>
@@ -243,7 +309,7 @@ export default function PortfolioPage() {
           <div
             ref={carouselRef}
             className="flex gap-3 sm:gap-4 overflow-x-auto pt-3 sm:pt-4 pb-4 sm:pb-6 scrollbar-hide px-3 sm:px-4 snap-x snap-mandatory items-center"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             {PORTFOLIO_ITEMS.map((item, index) => {
               const isActive = index === activeIndex;
@@ -252,10 +318,10 @@ export default function PortfolioPage() {
                   key={item.id}
                   onClick={() => setActiveIndex(index)}
                   className={cn(
-                    "relative shrink-0 w-[80px] h-[55px] sm:w-[110px] sm:h-[75px] lg:w-[140px] lg:h-[95px] rounded-lg sm:rounded-xl overflow-hidden transition-all duration-300 snap-center",
+                    "relative shrink-0 w-[80px] h-[55px] sm:w-[110px] sm:h-[75px] lg:w-[140px] lg:h-[95px] rounded-lg sm:rounded-xl overflow-hidden cursor-pointer transition-all duration-300 snap-center",
                     isActive
                       ? "ring-2 ring-primary ring-offset-2 ring-offset-slate-50 dark:ring-offset-[#04080f] scale-100 opacity-100"
-                      : "opacity-75 hover:opacity-100 scale-95 hover:scale-100 border border-slate-200 dark:border-slate-800"
+                      : "opacity-75 hover:opacity-100 scale-95 hover:scale-100 border border-slate-200 dark:border-slate-800",
                   )}
                 >
                   <img
@@ -271,7 +337,6 @@ export default function PortfolioPage() {
             })}
           </div>
         </motion.div>
-
       </div>
     </div>
   );
