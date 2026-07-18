@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight } from 'lucide-react';
 import { SectionHeader } from '../../../shared/components/ui/SectionHeader';
 import { Badge } from '../../../shared/components/ui/Badge';
 import { SERVICES, ACCENT_COLORS } from '../data/services.data';
 import { fadeSlideUp, staggerContainer } from '../../../shared/lib/motion';
+import { Images } from '../../../assets/images';
 import { cn } from '../../../shared/lib/cn';
 
 export function ServicesSection() {
@@ -27,13 +27,13 @@ export function ServicesSection() {
         >
           {SERVICES.map((item, i) => {
             const colors = ACCENT_COLORS[item.accent];
-            const isBig = i === 0;
+            const isBig = i === 0 || i === 1;
 
             let colClasses = '';
-            if (i === 0) colClasses = 'md:col-span-2 lg:col-span-4 lg:row-span-2';
-            else if (i === 1) colClasses = 'md:col-span-1 lg:col-span-2';
+            if (i === 0) colClasses = 'md:col-span-2 lg:col-span-3 lg:row-span-2';
+            else if (i === 1) colClasses = 'md:col-span-2 lg:col-span-3 lg:row-span-2';
             else if (i === 2) colClasses = 'md:col-span-1 lg:col-span-2';
-            else if (i === 3 || i === 4) colClasses = 'md:col-span-1 lg:col-span-3';
+            else if (i === 3 || i === 4) colClasses = 'md:col-span-1 lg:col-span-2';
 
             return (
               <motion.div
@@ -55,40 +55,47 @@ export function ServicesSection() {
                   <div className="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-[300%] transition-transform duration-1000 ease-in-out skew-x-12" />
                 </div>
 
-                <div className={cn('relative h-full flex flex-col justify-between p-5', isBig && 'lg:p-7')}>
-                  <div>
-                    <div className="flex items-start justify-between mb-4">
-                      <div className={cn('w-10 h-10 rounded-xl border flex items-center justify-center transition-colors', colors.bg, colors.border, 'group-hover:border-primary/30')}>
-                        <item.icon className={cn('w-5 h-5', colors.text)} />
+                <div className={cn('relative h-full flex flex-col md:flex-row', !isBig && 'flex-col')}>
+                  <div className={cn('flex flex-col justify-between p-5 flex-1', isBig && 'lg:p-7', isBig && 'md:w-1/2')}>
+                    <div>
+                      <div className="flex items-start justify-between mb-4">
+                        <div className={cn('w-10 h-10 rounded-xl border flex items-center justify-center transition-colors', colors.bg, colors.border, 'group-hover:border-primary/30')}>
+                          <item.icon className={cn('w-5 h-5', colors.text)} />
+                        </div>
+                        <Badge
+                          variant={item.tag.includes('Phare') ? 'warning' : item.available ? 'success' : 'default'}
+                          pulse={item.available}
+                        >
+                          {item.tag}
+                        </Badge>
                       </div>
-                      <Badge
-                        variant={item.tag.includes('Phare') ? 'warning' : item.available ? 'success' : 'default'}
-                        pulse={item.available}
-                      >
-                        {item.tag}
-                      </Badge>
+                      <h3 className={cn('font-heading font-bold text-slate-900 dark:text-white mb-2', isBig ? 'text-xl lg:text-2xl' : 'text-base')}>
+                        {item.title}
+                      </h3>
+                      <p className={cn('text-slate-600 dark:text-slate-400 leading-relaxed', isBig ? 'text-sm max-w-sm' : 'text-xs')}>
+                        {item.desc}
+                      </p>
                     </div>
-                    <h3 className={cn('font-heading font-bold text-slate-900 dark:text-white mb-2', isBig ? 'text-xl lg:text-2xl' : 'text-base')}>
-                      {item.title}
-                    </h3>
-                    <p className={cn('text-slate-600 dark:text-slate-400 leading-relaxed', isBig ? 'text-sm max-w-sm' : 'text-xs')}>
-                      {item.desc}
-                    </p>
+                    {isBig && (
+                      <div className="flex flex-wrap gap-2 mt-5">
+                        <Link
+                          to="/contact"
+                          className={cn("inline-flex items-center gap-1.5 px-4 py-2 text-white text-xs font-semibold rounded-xl transition-colors", i === 1 ? "bg-sky-500 hover:bg-sky-600" : "bg-primary hover:bg-primary/90")}
+                        >
+                          Démarrer un projet
+                        </Link>
+                      </div>
+                    )}
                   </div>
+                  
+                  {/* Image pour les grands services (i === 0 ou i === 1) */}
                   {isBig && (
-                    <div className="flex flex-wrap gap-2 mt-5">
-                      <Link
-                        to="/services"
-                        className="inline-flex items-center gap-1.5 px-4 py-2 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white rounded-xl transition-all"
-                      >
-                        Voir tous les services <ArrowUpRight className="w-3.5 h-3.5" />
-                      </Link>
-                      <Link
-                        to="/contact"
-                        className="inline-flex items-center gap-1.5 px-4 py-2 bg-primary hover:bg-primary/90 text-white text-xs font-semibold rounded-xl transition-colors"
-                      >
-                        Démarrer un projet
-                      </Link>
+                    <div className="hidden md:flex w-1/2 relative overflow-hidden border-l border-slate-200 dark:border-slate-800 items-center justify-center p-6 lg:p-8">
+                      <img 
+                        src={i === 0 ? Images.solinexia[0] : Images.solinexia[2]} 
+                        alt={item.title} 
+                        className="w-full max-h-[160px] lg:max-h-[200px] object-cover rounded-2xl shadow-sm"
+                      />
                     </div>
                   )}
                 </div>

@@ -1,3 +1,4 @@
+import { Globe, LayoutDashboard, LayoutTemplate, Wand2, type LucideIcon } from 'lucide-react';
 import { Images } from '../../../assets/images';
 
 export interface PortfolioItem {
@@ -177,5 +178,153 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     rating: 5,
     before: Images.portfolio[2].before,
     after: Images.portfolio[2].after,
+  },
+];
+
+export interface ProjectItem {
+  id: string;
+  title: string;
+  category: string;
+  desc: string;
+  image: string;
+  link: string;
+}
+
+export interface PortfolioTab {
+  id: string;
+  label: string;
+  icon: LucideIcon;
+  tagline: string;
+}
+
+export const PORTFOLIO_TABS: PortfolioTab[] = [
+  {
+    id: "visuels",
+    label: "Visuels",
+    icon: Wand2,
+    tagline: "La magie de la retouche et de la direction artistique.",
+  },
+  {
+    id: "templates",
+    label: "Templates",
+    icon: LayoutTemplate,
+    tagline: "Des modèles prêts à l'emploi pour démarrer rapidement.",
+  },
+  {
+    id: "dashboards",
+    label: "Dashboards",
+    icon: LayoutDashboard,
+    tagline: "Des tableaux de bord interactifs et performants.",
+  },
+  {
+    id: "sites",
+    label: "Sites Vitrines",
+    icon: Globe,
+    tagline: "Des vitrines digitales élégantes pour votre marque.",
+  },
+];
+
+export const TEMPLATES_ITEMS: ProjectItem[] = [
+  {
+    id: "t1",
+    title: "E-commerce Minimalist",
+    category: "Mode & Beauté",
+    desc: "Un template épuré optimisé pour les conversions.",
+    image: Images.vitrines[0],
+    link: "/",
+  },
+  {
+    id: "t2",
+    title: "SaaS Landing Page",
+    category: "Technologie",
+    desc: "Page d'atterrissage complète avec tarification.",
+    image: Images.vitrines[1],
+    link: "/",
+  },
+  {
+    id: "t3",
+    title: "Portfolio Créatif",
+    category: "Agence",
+    desc: "Mettez en valeur vos réalisations avec style.",
+    image: Images.vitrines[2],
+    link: "/",
+  },
+  {
+    id: "t4",
+    title: "Restaurant & Delivery",
+    category: "Gastronomie",
+    desc: "Template avec système de commande intégré.",
+    image: Images.vitrines[3],
+    link: "/",
+  },
+];
+
+export const DASHBOARDS_ITEMS: ProjectItem[] = [
+  {
+    id: "d1",
+    title: "Analytics Pro",
+    category: "SaaS",
+    desc: "Tableau de bord de suivi des performances marketing.",
+    image: Images.solinexia[1],
+    link: "/",
+  },
+  {
+    id: "d2",
+    title: "Admin E-commerce",
+    category: "Gestion",
+    desc: "Interface de gestion de commandes et de stocks.",
+    image: Images.solinexia[2],
+    link: "/",
+  },
+  {
+    id: "d3",
+    title: "CRM Immobilier",
+    category: "Immobilier",
+    desc: "Suivi des prospects et gestion des biens.",
+    image: Images.solinexia[3],
+    link: "/",
+  },
+  {
+    id: "d4",
+    title: "Finance & Crypto",
+    category: "Fintech",
+    desc: "Tableau de bord de suivi de portefeuilles financiers.",
+    image: Images.solinexia[4],
+    link: "/",
+  },
+];
+
+export const WEBSITES_ITEMS: ProjectItem[] = [
+  {
+    id: "w1",
+    title: "Cabinet d'Avocats",
+    category: "Corporate",
+    desc: "Site institutionnel inspirant confiance et expertise.",
+    image: Images.solinexia[5],
+    link: "/",
+  },
+  {
+    id: "w2",
+    title: "Clinique Dentaire",
+    category: "Santé",
+    desc: "Site vitrine avec prise de rendez-vous intégrée.",
+    image: Images.solinexia[8],
+    link: "/",
+  },
+  {
+    id: "w3",
+    title: "Studio de Yoga",
+    category: "Bien-être",
+    desc: "Design relaxant et planning des cours interactif.",
+    image: Images.solinexia[9],
+    link: "/",
+  },
+  {
+    id: "w4",
+    title: "Agence de Voyage",
+    category: "Tourisme",
+    desc: "Présentation de destinations et formulaires de devis.",
+    image: Images.solinexia[1],
+    link: "/",
   },
 ];

@@ -47,9 +47,9 @@ export function AboutSection() {
             <div className="absolute -inset-4 bg-gradient-to-br from-primary/10 to-secondary/5 rounded-3xl blur-2xl" />
             <div className="relative rounded-3xl overflow-hidden border border-slate-200/50 dark:border-slate-800/50">
               <img
-                src={Images.heroProduct}
+                src={Images.solinexia[7]}
                 alt="Équipe Solinexia Dakar"
-                className="w-full h-auto object-cover"
+                className="w-full h-auto object-contain"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between flex-wrap gap-2">

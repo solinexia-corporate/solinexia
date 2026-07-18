@@ -83,9 +83,9 @@ export function HeroSection() {
           >
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent z-10" />
             <img 
-              src={Images.heroProduct} 
+              src={Images.solinexia[6]} 
               alt="Solinexia Excellence" 
-              className="w-full h-[500px] lg:h-[600px] object-cover hover:scale-105 transition-transform duration-700"
+              className="w-full h-auto object-contain hover:scale-105 transition-transform duration-700 rounded-3xl"
             />
           </motion.div>
           
