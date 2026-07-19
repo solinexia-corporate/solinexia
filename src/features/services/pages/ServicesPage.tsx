@@ -1,5 +1,6 @@
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Check } from 'lucide-react';
 import { Badge } from '../../../shared/components/ui/Badge';
 import { Button } from '../../../shared/components/ui/Button';
@@ -10,7 +11,7 @@ import { Images } from '../../../assets/images';
 
 // Map each service index to a specific solinexia image
 const SERVICE_IMAGES: string[] = [
-  Images.solinexia[0],  // Marketing Visuel Premium → solinexia1
+  Images.solinexia[5],  // Marketing Visuel Premium → solinexia6
   Images.solinexia[2],  // Développement Web → solinexia3
   Images.solinexia[4],  // Direction Artistique → solinexia5
   Images.solinexia[8],  // Applications Mobiles → solinexia9
@@ -18,6 +19,22 @@ const SERVICE_IMAGES: string[] = [
 ];
 
 export default function ServicesPage() {
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (hash) {
+      setTimeout(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          const y = element.getBoundingClientRect().top + window.scrollY - 100;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [hash]);
+
   return (
     <div className="relative pt-28 pb-24">
       {/* Background glow */}
@@ -62,6 +79,7 @@ export default function ServicesPage() {
 
             return (
               <motion.div
+                id={service.id}
                 key={service.title}
                 variants={fadeSlideUp}
                 className={cn(
@@ -82,17 +100,8 @@ export default function ServicesPage() {
                     <img
                       src={serviceImage}
                       alt={service.title}
-                      className="absolute inset-4 w-[calc(100%-2rem)] h-[calc(100%-2rem)] object-contain group-hover:scale-105 transition-transform duration-700"
+                      className="absolute inset-4 w-[calc(100%-2rem)] h-[calc(100%-2rem)] object-contain rounded-2xl group-hover:scale-105 transition-transform duration-700 shadow-sm"
                     />
-                    {/* Gradient overlay from content side */}
-                    <div className={cn(
-                      'absolute inset-0 z-10 pointer-events-none',
-                      isReversed
-                        ? 'bg-gradient-to-l from-white dark:from-slate-900/50 via-transparent to-transparent'
-                        : 'bg-gradient-to-r from-transparent via-transparent to-white dark:to-slate-900/50',
-                      'hidden lg:block'
-                    )} />
-                    <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-slate-900/50 via-transparent to-transparent lg:hidden pointer-events-none" />
                   </div>
 
                   {/* Content — takes 3 columns */}

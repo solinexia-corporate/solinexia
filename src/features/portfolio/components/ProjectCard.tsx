@@ -10,29 +10,33 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project }: ProjectCardProps) {
+  const hasPreview = project.link && project.link !== "/";
+
   return (
     <motion.div
       variants={fadeSlideUp}
       className="group relative flex flex-col bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
     >
       {/* Image container with hover effect */}
-      <div className="relative aspect-video overflow-hidden bg-slate-100 dark:bg-slate-800">
+      <div className="relative h-64 sm:h-72 flex items-center justify-center overflow-hidden bg-slate-50 dark:bg-slate-800/50">
         <img
           src={project.image}
           alt={project.title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/40 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100 backdrop-blur-[2px]">
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-white/90 text-slate-900 px-4 py-2 rounded-full font-medium text-sm hover:bg-white hover:scale-105 transition-all duration-300 shadow-lg"
-          >
-            <Eye className="w-4 h-4" />
-            Voir la démo
-          </a>
-        </div>
+        {hasPreview && (
+          <div className="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/40 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100 backdrop-blur-[2px]">
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 bg-white/90 text-slate-900 px-4 py-2 rounded-full font-medium text-sm hover:bg-white hover:scale-105 transition-all duration-300 shadow-lg"
+            >
+              <Eye className="w-4 h-4" />
+              Voir la démo
+            </a>
+          </div>
+        )}
         <div className="absolute top-3 left-3">
           <Badge
             variant="default"
@@ -49,15 +53,17 @@ export function ProjectCard({ project }: ProjectCardProps) {
           <h3 className="font-heading font-bold text-lg sm:text-xl text-slate-900 dark:text-white transition-colors group-hover:text-primary dark:group-hover:text-primary">
             {project.title}
           </h3>
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-1.5 text-slate-400 hover:text-primary hover:bg-primary/10 rounded-lg transition-colors shrink-0"
-            aria-label="Voir le projet"
-          >
-            <ExternalLink className="w-4 h-4" />
-          </a>
+          {hasPreview && (
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-1.5 text-slate-400 hover:text-primary hover:bg-primary/10 rounded-lg transition-colors shrink-0"
+              aria-label="Voir le projet"
+            >
+              <ExternalLink className="w-4 h-4" />
+            </a>
+          )}
         </div>
         <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed flex-1">
           {project.desc}

@@ -8,6 +8,8 @@ export interface Service {
   features: string[];
   accent: 'violet' | 'sky' | 'amber' | 'emerald' | 'rose';
   available: boolean;
+  id: string;
+  portfolioTab: string;
 }
 
 export const SERVICES: Service[] = [
@@ -26,6 +28,8 @@ export const SERVICES: Service[] = [
     ],
     accent: 'violet',
     available: true,
+    id: 'marketing-visuel',
+    portfolioTab: 'visuels',
   },
   {
     icon: Globe,
@@ -42,6 +46,8 @@ export const SERVICES: Service[] = [
     ],
     accent: 'sky',
     available: true,
+    id: 'developpement-web',
+    portfolioTab: 'sites',
   },
   {
     icon: Camera,
@@ -58,10 +64,12 @@ export const SERVICES: Service[] = [
     ],
     accent: 'amber',
     available: true,
+    id: 'direction-artistique',
+    portfolioTab: 'visuels',
   },
   {
     icon: Smartphone,
-    tag: 'Bientôt disponible',
+    tag: 'Disponible',
     title: 'Applications Mobiles',
     desc: "Conception et développement d'applications iOS et Android natives ou cross-platform. Des apps fluides et performantes à l'image de votre marque.",
     features: [
@@ -73,11 +81,13 @@ export const SERVICES: Service[] = [
       'Support & mises à jour',
     ],
     accent: 'emerald',
-    available: false,
+    available: true,
+    id: 'applications-mobiles',
+    portfolioTab: 'dashboards',
   },
   {
     icon: Settings,
-    tag: 'Bientôt disponible',
+    tag: 'Disponible',
     title: 'Solutions Sur-mesure & API',
     desc: "Automatisation de processus, intégrations API complexes et outils digitaux personnalisés pour optimiser votre activité.",
     features: [
@@ -89,7 +99,9 @@ export const SERVICES: Service[] = [
       'Formation équipe incluse',
     ],
     accent: 'rose',
-    available: false,
+    available: true,
+    id: 'solutions-sur-mesure',
+    portfolioTab: 'dashboards',
   },
 ];
 

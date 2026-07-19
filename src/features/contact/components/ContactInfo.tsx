@@ -31,7 +31,7 @@ function AvailabilityBadge() {
           isAvailable ? "bg-success animate-pulse" : "bg-warning",
         )}
       />
-      {isAvailable ? "Disponible maintenant" : "Répond sous 2h"}
+      {isAvailable ? "Disponible maintenant" : "Réponse sous 2h"}
     </div>
   );
 }

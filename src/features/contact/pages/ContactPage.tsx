@@ -32,20 +32,7 @@ export default function ContactPage() {
           </Link>
         </motion.div>
 
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-12"
-        >
-          <h1 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-slate-900 dark:text-white mb-3">
-            Démarrons votre projet.
-          </h1>
-          <p className="text-slate-600 dark:text-slate-400 text-base max-w-md">
-            Remplissez le formulaire ou écrivez-nous directement sur WhatsApp.
-          </p>
-        </motion.div>
+        
 
         {/* Grid */}
         <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">

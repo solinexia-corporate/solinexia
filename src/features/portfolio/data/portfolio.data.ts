@@ -265,7 +265,7 @@ export const DASHBOARDS_ITEMS: ProjectItem[] = [
     title: "Analytics Pro",
     category: "SaaS",
     desc: "Tableau de bord de suivi des performances marketing.",
-    image: Images.solinexia[1],
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
     link: "/",
   },
   {
@@ -273,7 +273,7 @@ export const DASHBOARDS_ITEMS: ProjectItem[] = [
     title: "Admin E-commerce",
     category: "Gestion",
     desc: "Interface de gestion de commandes et de stocks.",
-    image: Images.solinexia[2],
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
     link: "/",
   },
   {
@@ -281,7 +281,7 @@ export const DASHBOARDS_ITEMS: ProjectItem[] = [
     title: "CRM Immobilier",
     category: "Immobilier",
     desc: "Suivi des prospects et gestion des biens.",
-    image: Images.solinexia[3],
+    image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=800&auto=format&fit=crop",
     link: "/",
   },
   {
@@ -289,7 +289,7 @@ export const DASHBOARDS_ITEMS: ProjectItem[] = [
     title: "Finance & Crypto",
     category: "Fintech",
     desc: "Tableau de bord de suivi de portefeuilles financiers.",
-    image: Images.solinexia[4],
+    image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=800&auto=format&fit=crop",
     link: "/",
   },
 ];
@@ -300,7 +300,7 @@ export const WEBSITES_ITEMS: ProjectItem[] = [
     title: "Cabinet d'Avocats",
     category: "Corporate",
     desc: "Site institutionnel inspirant confiance et expertise.",
-    image: Images.solinexia[5],
+    image: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=80&w=800&auto=format&fit=crop",
     link: "/",
   },
   {
@@ -308,7 +308,7 @@ export const WEBSITES_ITEMS: ProjectItem[] = [
     title: "Clinique Dentaire",
     category: "Santé",
     desc: "Site vitrine avec prise de rendez-vous intégrée.",
-    image: Images.solinexia[8],
+    image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=800&auto=format&fit=crop",
     link: "/",
   },
   {
@@ -316,7 +316,7 @@ export const WEBSITES_ITEMS: ProjectItem[] = [
     title: "Studio de Yoga",
     category: "Bien-être",
     desc: "Design relaxant et planning des cours interactif.",
-    image: Images.solinexia[9],
+    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=800&auto=format&fit=crop",
     link: "/",
   },
   {
@@ -324,7 +324,7 @@ export const WEBSITES_ITEMS: ProjectItem[] = [
     title: "Agence de Voyage",
     category: "Tourisme",
     desc: "Présentation de destinations et formulaires de devis.",
-    image: Images.solinexia[1],
+    image: "https://images.unsplash.com/photo-1618761714954-0b8cd0026356?q=80&w=800&auto=format&fit=crop",
     link: "/",
   },
 ];

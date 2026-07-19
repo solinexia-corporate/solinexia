@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import { cn } from "../../../shared/lib/cn";
 import {
   PORTFOLIO_TABS,
@@ -14,8 +14,29 @@ import { PortfolioVisuals } from "../components/PortfolioVisuals";
 import { PortfolioGrid } from "../components/PortfolioGrid";
 
 export default function PortfolioPage() {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [activeTab, setActiveTab] = useState(0);
-  const tab = PORTFOLIO_TABS[activeTab];
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, []);
+
+  useEffect(() => {
+    const tabParam = searchParams.get('tab');
+    if (tabParam) {
+      const index = PORTFOLIO_TABS.findIndex((t) => t.id === tabParam);
+      if (index !== -1) setActiveTab(index);
+    } else {
+      setActiveTab(0);
+    }
+  }, [searchParams]);
+
+  const handleTabChange = (index: number) => {
+    setActiveTab(index);
+    setSearchParams({ tab: PORTFOLIO_TABS[index].id });
+  };
+
+  const tab = PORTFOLIO_TABS[activeTab] || PORTFOLIO_TABS[0];
 
   // State for PortfolioVisuals
   const [activeVisualIndex, setActiveVisualIndex] = useState(0);
@@ -48,7 +69,7 @@ export default function PortfolioPage() {
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
               Retour à l'accueil
             </Link>
-            <h1 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-slate-900 dark:text-white mb-1 sm:mb-2 tracking-tight">
+            <h1 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-slate-900 dark:text-white mb-1 sm:mb-2 tracking-tight">
               Nos <span className="text-gradient">Réalisations</span>.
             </h1>
             <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base lg:text-lg">
@@ -90,7 +111,7 @@ export default function PortfolioPage() {
               {PORTFOLIO_TABS.map((t, index) => (
                 <button
                   key={t.id}
-                  onClick={() => setActiveTab(index)}
+                  onClick={() => handleTabChange(index)}
                   className={cn(
                     "inline-flex items-center gap-2 px-3 sm:px-4 py-2 lg:py-4 text-sm font-medium cursor-pointer transition-all duration-300 whitespace-nowrap shrink-0 snap-start lg:border-b-2 lg:-mb-[2px]",
                     activeTab === index
